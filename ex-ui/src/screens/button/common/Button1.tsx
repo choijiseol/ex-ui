@@ -13,6 +13,12 @@ export default function Button1() {
         <Cloud2 src={"/assets/img/cloud2.svg"} time={time}/>
         <Cloud3 src={"/assets/img/cloud3.svg"} time={time}/>
         <Star src={"/assets/img/star.svg"} time={time}/>
+        <LeftLight1 time={time}/>
+        <LeftLight2 time={time}/>
+        <LeftLight3 time={time}/>
+        <RightLight1 time={time}/>
+        <RightLight2 time={time}/>
+        <RightLight3 time={time}/>
     </ButtonWrapper>
 }
 
@@ -216,7 +222,32 @@ const moveStarPm = keyframes`
     }
 `
 
+const InVisible = keyframes`
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
+const Visible = keyframes`
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+`
+
 const ButtonWrapper = styled.div<{ time: TimeType }>`
+    cursor: pointer;
     position: relative;
     overflow: hidden;
     width: 300px;
@@ -281,4 +312,76 @@ const Star = styled.img<{time: TimeType}>`
     left: 26px;
     top: 20px;
     animation: ${({time}) => time === "AM" ? moveStarAm : moveStarPm} 0.6s ease-in-out forwards;
+`
+
+const LeftLight1 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    top: -10px;
+    left: 0;
+    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
+`
+
+const LeftLight2 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    top: -30px;
+    left: 0;
+    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
+`
+
+const LeftLight3 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+    top: -50px;
+    left: 0;
+    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
+`
+
+const RightLight1 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    top: -10px;
+    right: 0;
+    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
+`
+
+const RightLight2 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    top: -30px;
+    right: 0;
+    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
+`
+
+const RightLight3 = styled.div<{time: TimeType}>`
+    position: absolute;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+    top: -50px;
+    right: 0;
+    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
 `
