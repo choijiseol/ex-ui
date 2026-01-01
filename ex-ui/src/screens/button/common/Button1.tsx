@@ -12,6 +12,7 @@ export default function Button1() {
         <Cloud1 src={"/assets/img/cloud1.svg"} time={time}/>
         <Cloud2 src={"/assets/img/cloud2.svg"} time={time}/>
         <Cloud3 src={"/assets/img/cloud3.svg"} time={time}/>
+        <Star src={"/assets/img/star.svg"} time={time}/>
     </ButtonWrapper>
 }
 
@@ -45,12 +46,17 @@ const moveToRight = keyframes`
         box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
         transform: translate(10px, 10px);
     }
-    25% {
+    40% {
+        background-color: #FFDA37;
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        transform: translate(10px, 10px);
+    }
+    59% {
         background-color: #FFDA37;
         box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
         transform: translate(70px, 120px);
     }
-    75% {
+    60% {
         background-color: #DEDEDE;
         box-shadow: inset 0 0 8px rgb(173, 173, 173);
         transform: translate(120px, 120px);
@@ -68,12 +74,17 @@ const moveToLeft = keyframes`
         box-shadow: inset 0 0 8px rgb(173, 173, 173);
         transform: translate(190px, 10px);
     }
-    25% {
+    40% {
+        background-color: #DEDEDE;
+        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        transform: translate(190px, 10px);
+    }
+    59% {
         background-color: #DEDEDE;
         box-shadow: inset 0 0 8px rgb(173, 173, 173);
         transform: translate(120px, 120px);
     }
-    75% {
+    60% {
         background-color: #FFDA37;
         box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
         transform: translate(70px, 120px);
@@ -175,6 +186,36 @@ const movecloud3Pm = keyframes`
     }
 `
 
+const moveStarAm = keyframes`
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+    40% {
+        opacity: 0;
+        transform: translate(0px, 80px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0px, 80px);
+    }
+`
+
+const moveStarPm = keyframes`
+    0% {
+        opacity: 0;
+        transform: translate(0px, -80px);
+    }
+    50% {
+        opacity: 0;
+        transform: translate(0px, -80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+`
+
 const ButtonWrapper = styled.div<{ time: TimeType }>`
     position: relative;
     overflow: hidden;
@@ -227,9 +268,17 @@ const Cloud2 = styled.img<{ time: TimeType }>`
 `
 
 const Cloud3 = styled.img<{ time: TimeType }>`
-    z-index: 4;
+    z-index: 5;
     position: absolute;
     left: 0;
     bottom: 0;
     animation: ${({time}) => time === "AM" ? movecloud3Am : movecloud3Pm} 0.6s ease-in-out forwards;
+`
+
+const Star = styled.img<{time: TimeType}>`
+    z-index: 2;
+    position: absolute;
+    left: 26px;
+    top: 20px;
+    animation: ${({time}) => time === "AM" ? moveStarAm : moveStarPm} 0.6s ease-in-out forwards;
 `
