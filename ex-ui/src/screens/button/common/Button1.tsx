@@ -43,27 +43,27 @@ const changeBackPM = keyframes`
 const moveToRight = keyframes`
     0% {
         background-color: #FFDA37;
-        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(10px, 10px);
     }
     40% {
         background-color: #FFDA37;
-        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(10px, 10px);
     }
     59% {
         background-color: #FFDA37;
-        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(20px, 120px);
     }
     60% {
         background-color: #DEDEDE;
-        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(180px, 120px);
     }
     100% {
         background-color: #DEDEDE;
-        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(190px, 10px);
     }
 `;
@@ -71,27 +71,27 @@ const moveToRight = keyframes`
 const moveToLeft = keyframes`
     0% {
         background-color: #DEDEDE;
-        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(190px, 10px);
     }
     40% {
         background-color: #DEDEDE;
-        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(190px, 10px);
     }
     59% {
         background-color: #DEDEDE;
-        box-shadow: inset 0 0 8px rgb(173, 173, 173);
+        box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(180px, 120px);
     }
     60% {
         background-color: #FFDA37;
-        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(20px, 120px);
     }
     100% {
         background-color: #FFDA37;
-        box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+        box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
         transform: translate(10px, 10px);
     }
 `;
@@ -259,17 +259,16 @@ const Circle = styled.div<{ time: TimeType }>`
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    box-shadow: inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
 
     ${({time}) => time === "AM"
             ? css`
                 background-color: #FFDA37;
-                box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
+                box-shadow: inset -2px -2px 8px rgb(218, 182, 27), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
                 animation: ${moveToLeft} 0.8s ease-in-out forwards;
             `
             : css`
                 background-color: #DEDEDE;
-                box-shadow: inset 0 0 8px rgb(173, 173, 173);
+                box-shadow: inset 0 0 8px rgb(173, 173, 173), inset 2px 2px 8px rgba(255, 255, 255, .8), 0 2px 2px rgba(0, 0, 0, .25);
                 animation: ${moveToRight} 0.8s ease-in-out forwards;
 
             `
