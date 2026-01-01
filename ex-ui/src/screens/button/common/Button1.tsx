@@ -13,12 +13,12 @@ export default function Button1() {
         <Cloud2 src={"/assets/img/cloud2.svg"} time={time}/>
         <Cloud3 src={"/assets/img/cloud3.svg"} time={time}/>
         <Star src={"/assets/img/star.svg"} time={time}/>
-        <LeftLight1 time={time}/>
-        <LeftLight2 time={time}/>
-        <LeftLight3 time={time}/>
-        <RightLight1 time={time}/>
-        <RightLight2 time={time}/>
-        <RightLight3 time={time}/>
+        <Light time={time} side={"left"} size={140} topOffset={-10}/>
+        <Light time={time} side={"left"} size={180} topOffset={-30}/>
+        <Light time={time} side={"left"} size={220} topOffset={-50}/>
+        <Light time={time} side={"right"} size={140} topOffset={-10}/>
+        <Light time={time} side={"right"} size={180} topOffset={-30}/>
+        <Light time={time} side={"right"} size={220} topOffset={-50}/>
     </ButtonWrapper>
 }
 
@@ -314,74 +314,24 @@ const Star = styled.img<{time: TimeType}>`
     animation: ${({time}) => time === "AM" ? moveStarAm : moveStarPm} 0.6s ease-in-out forwards;
 `
 
-const LeftLight1 = styled.div<{time: TimeType}>`
+type Side = 'left' | 'right';
+const Light = styled.div<{
+    time: TimeType;
+    side: Side;
+    size: number;
+    topOffset: number;
+}>`
     position: absolute;
     z-index: 8;
     background-color: rgba(255, 255, 255, 0.1);
-    width: 140px;
-    height: 140px;
+    width: ${({size}) => size}px;
+    height: ${({size}) => size}px;
     border-radius: 100%;
-    top: -10px;
-    left: 0;
-    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
-`
-
-const LeftLight2 = styled.div<{time: TimeType}>`
-    position: absolute;
-    z-index: 8;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 180px;
-    height: 180px;
-    border-radius: 100%;
-    top: -30px;
-    left: 0;
-    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
-`
-
-const LeftLight3 = styled.div<{time: TimeType}>`
-    position: absolute;
-    z-index: 8;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 220px;
-    height: 220px;
-    border-radius: 100%;
-    top: -50px;
-    left: 0;
-    animation: ${({time}) => time === "AM" ? InVisible : Visible} 0.8s ease-in-out forwards;
-`
-
-const RightLight1 = styled.div<{time: TimeType}>`
-    position: absolute;
-    z-index: 8;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 140px;
-    height: 140px;
-    border-radius: 100%;
-    top: -10px;
-    right: 0;
-    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
-`
-
-const RightLight2 = styled.div<{time: TimeType}>`
-    position: absolute;
-    z-index: 8;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 180px;
-    height: 180px;
-    border-radius: 100%;
-    top: -30px;
-    right: 0;
-    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
-`
-
-const RightLight3 = styled.div<{time: TimeType}>`
-    position: absolute;
-    z-index: 8;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 220px;
-    height: 220px;
-    border-radius: 100%;
-    top: -50px;
-    right: 0;
-    animation: ${({time}) => time === "AM" ? Visible : InVisible} 0.8s ease-in-out forwards;
+    top: ${({topOffset}) => topOffset}px;
+    ${({side}) => side === 'left' ? css`left: 0;` : css`right: 0;`}
+    animation: ${({time, side}) => 
+            side === 'left'
+                    ? (time === 'AM' ? InVisible : Visible)
+                    : (time === 'AM' ? Visible : InVisible)
+    } 0.8s ease-in-out forwards;
 `
