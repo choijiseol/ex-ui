@@ -24,10 +24,7 @@ export default function Button1() {
 
 const changeBackAm = keyframes`
     0% {
-        background-color: #2C2352;
-    }
-    50% {
-        background-color: #393c9c;
+        background-color: #373251;
     }
     100% {
         background-color: #5DA6FF;
@@ -38,11 +35,8 @@ const changeBackPM = keyframes`
     0% {
         background-color: #5DA6FF;
     }
-    50% {
-        background-color: #393c9c;
-    }
     100% {
-        background-color: #2C2352;
+        background-color: #373251;
     }
 `;
 
@@ -255,7 +249,7 @@ const ButtonWrapper = styled.div<{ time: TimeType }>`
     border-radius: 100px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, .25), inset 0 0 8px rgba(0, 0, 0, .25);
 
-    background-color: ${({time}) => (time === "AM" ? "#5DA6FF" : "#2C2352")};
+    background-color: ${({time}) => (time === "AM" ? "#5DA6FF" : "#373251")};
     animation: ${({time}) => time === "AM" ? changeBackAm : changeBackPM} 0.8s ease-in-out forwards;
 `
 
