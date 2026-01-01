@@ -9,6 +9,9 @@ export default function Button1() {
     return <ButtonWrapper time={time}
                           onClick={() => setTime(time === "AM" ? "PM" : "AM")}>
         <Circle time={time}/>
+        <Cloud1 src={"/assets/img/cloud1.svg"} time={time}/>
+        <Cloud2 src={"/assets/img/cloud2.svg"} time={time}/>
+        <Cloud3 src={"/assets/img/cloud3.svg"} time={time}/>
     </ButtonWrapper>
 }
 
@@ -17,7 +20,7 @@ const changeBackAm = keyframes`
         background-color: #2C2352;
     }
     50% {
-        background-color: #393c9c; 
+        background-color: #393c9c;
     }
     100% {
         background-color: #5DA6FF;
@@ -82,6 +85,96 @@ const moveToLeft = keyframes`
     }
 `;
 
+const movecloud1Am = keyframes`
+    0% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    50% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+`
+
+const movecloud1Pm = keyframes`
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    60% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+`
+
+const movecloud2Am = keyframes`
+    0% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    80% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+`
+
+const movecloud2Pm = keyframes`
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    20% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 60px);
+    }
+`
+
+const movecloud3Am = keyframes`
+    0% {
+        opacity: 1;
+        transform: translate(60px, 0);
+    }
+    60% {
+        opacity: 0;
+        transform: translate(60px, 60px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(60px, 60px);
+    }
+`
+
+const movecloud3Pm = keyframes`
+    0% {
+        opacity: 0;
+        transform: translate(60px, 60px);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(60px, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(60px, 0);
+    }
+`
+
 const ButtonWrapper = styled.div<{ time: TimeType }>`
     position: relative;
     overflow: hidden;
@@ -89,12 +182,13 @@ const ButtonWrapper = styled.div<{ time: TimeType }>`
     height: 120px;
     border-radius: 100px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, .25), inset 0 0 8px rgba(0, 0, 0, .25);
-    
+
     background-color: ${({time}) => (time === "AM" ? "#5DA6FF" : "#2C2352")};
     animation: ${({time}) => time === "AM" ? changeBackAm : changeBackPM} 0.6s ease-in-out forwards;
 `
 
-const Circle = styled.div<{time: TimeType}>`
+const Circle = styled.div<{ time: TimeType }>`
+    z-index: 10;
     position: absolute;
     width: 100px;
     height: 100px;
@@ -114,4 +208,28 @@ const Circle = styled.div<{time: TimeType}>`
 
             `
     }
+`
+
+const Cloud1 = styled.img<{ time: TimeType }>`
+    z-index: 5;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    animation: ${({time}) => time === "AM" ? movecloud1Am : movecloud1Pm} 0.6s ease-in-out forwards;
+`
+
+const Cloud2 = styled.img<{ time: TimeType }>`
+    z-index: 4;
+    position: absolute;
+    right: 80px;
+    bottom: 10px;
+    animation: ${({time}) => time === "AM" ? movecloud2Am : movecloud2Pm} 0.6s ease-in-out forwards;
+`
+
+const Cloud3 = styled.img<{ time: TimeType }>`
+    z-index: 4;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation: ${({time}) => time === "AM" ? movecloud3Am : movecloud3Pm} 0.6s ease-in-out forwards;
 `
