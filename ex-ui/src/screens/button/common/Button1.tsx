@@ -60,12 +60,12 @@ const moveToRight = keyframes`
     59% {
         background-color: #FFDA37;
         box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
-        transform: translate(70px, 120px);
+        transform: translate(20px, 120px);
     }
     60% {
         background-color: #DEDEDE;
         box-shadow: inset 0 0 8px rgb(173, 173, 173);
-        transform: translate(120px, 120px);
+        transform: translate(180px, 120px);
     }
     100% {
         background-color: #DEDEDE;
@@ -88,12 +88,12 @@ const moveToLeft = keyframes`
     59% {
         background-color: #DEDEDE;
         box-shadow: inset 0 0 8px rgb(173, 173, 173);
-        transform: translate(120px, 120px);
+        transform: translate(180px, 120px);
     }
     60% {
         background-color: #FFDA37;
         box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
-        transform: translate(70px, 120px);
+        transform: translate(20px, 120px);
     }
     100% {
         background-color: #FFDA37;
@@ -184,7 +184,7 @@ const movecloud3Pm = keyframes`
     }
     50% {
         opacity: 1;
-        transform: translate(60px, 0);
+        transform: translate(60px, 60px);
     }
     100% {
         opacity: 1;
@@ -256,7 +256,7 @@ const ButtonWrapper = styled.div<{ time: TimeType }>`
     box-shadow: 0 4px 4px rgba(0, 0, 0, .25), inset 0 0 8px rgba(0, 0, 0, .25);
 
     background-color: ${({time}) => (time === "AM" ? "#5DA6FF" : "#2C2352")};
-    animation: ${({time}) => time === "AM" ? changeBackAm : changeBackPM} 0.6s ease-in-out forwards;
+    animation: ${({time}) => time === "AM" ? changeBackAm : changeBackPM} 0.8s ease-in-out forwards;
 `
 
 const Circle = styled.div<{ time: TimeType }>`
@@ -271,12 +271,12 @@ const Circle = styled.div<{ time: TimeType }>`
             ? css`
                 background-color: #FFDA37;
                 box-shadow: inset -2px -2px 8px rgb(218, 182, 27);
-                animation: ${moveToLeft} 0.6s ease-in-out forwards;
+                animation: ${moveToLeft} 0.8s ease-in-out forwards;
             `
             : css`
                 background-color: #DEDEDE;
                 box-shadow: inset 0 0 8px rgb(173, 173, 173);
-                animation: ${moveToRight} 0.6s ease-in-out forwards;
+                animation: ${moveToRight} 0.8s ease-in-out forwards;
 
             `
     }
@@ -287,7 +287,7 @@ const Cloud1 = styled.img<{ time: TimeType }>`
     position: absolute;
     right: 0;
     bottom: 0;
-    animation: ${({time}) => time === "AM" ? movecloud1Am : movecloud1Pm} 0.6s ease-in-out forwards;
+    animation: ${({time}) => time === "AM" ? movecloud1Am : movecloud1Pm} 0.8s ease-in-out forwards;
 `
 
 const Cloud2 = styled.img<{ time: TimeType }>`
@@ -295,7 +295,7 @@ const Cloud2 = styled.img<{ time: TimeType }>`
     position: absolute;
     right: 80px;
     bottom: 10px;
-    animation: ${({time}) => time === "AM" ? movecloud2Am : movecloud2Pm} 0.6s ease-in-out forwards;
+    animation: ${({time}) => time === "AM" ? movecloud2Am : movecloud2Pm} 0.8s ease-in-out forwards;
 `
 
 const Cloud3 = styled.img<{ time: TimeType }>`
@@ -303,7 +303,7 @@ const Cloud3 = styled.img<{ time: TimeType }>`
     position: absolute;
     left: 0;
     bottom: 0;
-    animation: ${({time}) => time === "AM" ? movecloud3Am : movecloud3Pm} 0.6s ease-in-out forwards;
+    animation: ${({time}) => time === "AM" ? movecloud3Am : movecloud3Pm} 0.8s ease-in-out forwards;
 `
 
 const Star = styled.img<{time: TimeType}>`
@@ -311,7 +311,7 @@ const Star = styled.img<{time: TimeType}>`
     position: absolute;
     left: 26px;
     top: 20px;
-    animation: ${({time}) => time === "AM" ? moveStarAm : moveStarPm} 0.6s ease-in-out forwards;
+    animation: ${({time}) => time === "AM" ? moveStarAm : moveStarPm} 0.8s ease-in-out forwards;
 `
 
 type Side = 'left' | 'right';
@@ -333,5 +333,5 @@ const Light = styled.div<{
             side === 'left'
                     ? (time === 'AM' ? InVisible : Visible)
                     : (time === 'AM' ? Visible : InVisible)
-    } 0.8s ease-in-out forwards;
+    } 1s ease-in-out forwards;
 `
